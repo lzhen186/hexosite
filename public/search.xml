@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/04/04/hello-world/</url>
+    <content><![CDATA[<h1 id="hexo-netlify-cms-vercel"><a href="#hexo-netlify-cms-vercel" class="headerlink" title="hexo-netlify-cms-vercel"></a>hexo-netlify-cms-vercel</h1><p>A templete to deploy a <strong>Hexo</strong> blog with <strong>Netlify-CMS</strong> on <strong>Vercel</strong>.</p>
+<p>✔ Totally free of charge</p>
+<p>✔ Static web pages, no rendering time</p>
+<p>✔ Edit online, just as simple as using a dynamic CMS, supported by Netlify-CMS</p>
+<p>✔ No local environment required, you can edit your pages on any devices, everywhere</p>
+<p>✔ Zero coding</p>
+<p>✔ Preview is supported by Netlify-CMS and Netlify</p>
+<p>✔ Vercel CDN makes your pages to load quickly from anywhere in the world, including China Mainland</p>
+<p>✔ Easy to bind to your domain, and enable SSL encrypt, supported by Vercel</p>
+<h1 id="Additional-improvements"><a href="#Additional-improvements" class="headerlink" title="Additional improvements"></a>Additional improvements</h1><ul>
+<li>Customized 404 page</li>
+</ul>
+<h1 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h1><ol>
+<li><p>Click <code>Use this template</code> to fork this repository. It can be private.</p>
+</li>
+<li><p>Modify <code>/source/admin/config.yml</code>. Change the value of <code>backend.repo</code> and <code>backend.base_url</code> to yours.</p>
+</li>
+<li><p>Go to <a href="https://github.com/settings/developers">Github Developer applications</a> and create a new oauth app. The only important field is <code>Authorization callback URL</code>, input <code>https://&lt;domain&gt;/callback</code>, where <code>&lt;domain&gt;</code> is domain from step 2, also note that HTTPS is required. And then generate a new client secret.</p>
+</li>
+<li><p>Go to <a href="https://vercel.com/new"><strong>Vercel</strong></a> to import your repository and create a new project. Before clicking <code>Deploy</code> button, add the Environment Variables <strong><code>OAUTH_GITHUB_CLIENT_ID</code></strong> and <strong><code>OAUTH_GITHUB_CLIENT_SECRET</code></strong> and set the values as generated in the previous step.</p>
+</li>
+<li><p>Click <code>Deploy</code> button and waiting for the deployment finished.</p>
+</li>
+<li><p>Maybe you need to change the <strong>Vercel</strong> provided domain in <em>Settings &gt; Domains</em>.</p>
+</li>
+<li><p>Open <strong><code>https://&lt;domain&gt;/admin/</code></strong> and login to the <strong>Netlify-CMS</strong> back-end.</p>
+</li>
+<li><p>Test whether <strong>Netlify-CMS</strong> is working properly.</p>
+</li>
+<li><p>If you need the preview feature provided by <strong>Netlify-CMS</strong>, that is, provides you a preview link on the article writing page once you click <code>save</code> button, you also need to link your blog repository to <a href="https://app.netlify.com/start"><strong>Netlify</strong></a>. This is similar to link to <strong>Vercel</strong>, but you do not need to add Environment Variables since you do not use <strong>Netlify-CMS</strong> on the <strong>Netlify</strong> provided domain.</p>
+</li>
+<li><p>Congratulations! You have successfully deployed a <strong>Hexo</strong> blog with <strong>Netlify-CMS</strong> on <strong>Vercel</strong>.</p>
+</li>
+</ol>
+<h1 id="Thanks"><a href="#Thanks" class="headerlink" title="Thanks"></a>Thanks</h1><p>The oauth gateway for Netlify CMS is implemented by <a href="https://github.com/ublabs/netlify-cms-oauth">ublabs/netlify-cms-oauth</a>.</p>
+]]></content>
+  </entry>
+</search>
