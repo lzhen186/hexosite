@@ -4,17 +4,13 @@ date: 2021-12-19T04:28:54.016Z
 ---
 1. 数据库操作
 
-   > `create database if not exists school `   --创建数据库
-   >
-   >
+   > `create database if not exists school`   --创建数据库
    >
    > `drop database if exists school`    --删除数据库
    >
+   > `show databases`-- 查看所有数据库
    >
-   > `show databases  `-- 查看所有数据库
-   >
-   >
-   > `use school  `  --使用数据库
+   > `use school`  --使用数据库
 
    1. 创建数据表
 
@@ -28,8 +24,6 @@ date: 2021-12-19T04:28:54.016Z
       * 字段属性：unsigned无符号、zerofull用0填充、auto_increment、null、not null、default
       * `show  create语句` ：查看定义
       * `desc语句`：显示表结构
-
-
    2. 数据表的类型 engine
 
       * 支持的引擎：`show engines;`
@@ -38,8 +32,6 @@ date: 2021-12-19T04:28:54.016Z
         MyISAM：全文检索、表空间较小；节约空间及响应速度；
 
         InnoDB： 事务处理、数据行绑定、外键约束、较大（约2倍）；安全性、事务处理适合多用户操作；
-
-
    3. 数据库字符集 `charset=utf8;`(也可以在my.ini文件配置)
    4. 修改数据库
 
@@ -71,8 +63,6 @@ date: 2021-12-19T04:28:54.016Z
       --或者建表之后
       alter table `student`
       add constraint `FK_gradeid` foreign key (`gradeid`) references `grade` (`gradeid`);
-
-
       ```
 
       有外键无法删除主表，需要删除从表的外键
@@ -96,3 +86,70 @@ date: 2021-12-19T04:28:54.016Z
       --这种删除会清空自增值，不会有日志
       truncate table subject
       ```
+   3. DQL语句：select
+
+      ```sql
+      --拼接
+      select concat("姓名：",studentname) as 新名字 from student 
+      --去重
+      select distinct studentname from student;
+      --查看自增数值
+      select @@auto_increment_increment
+      --查看mysql版本
+      select version()
+      --计算
+      select 100*3-1 as 计算结果；
+
+      --查询范围   等于 idCard>1500 and idCard<1800
+      select studentname from student 
+      where idCard between 1500 and 1800
+      --查（）有的记录
+      select studentname from student where idCard in (1500,1800)
+
+
+      --模糊查询   %前后模糊 ，_后一个字符模糊
+      select studentname from student where studentname like '%小%'
+      select studentname from student where studentname like '小_' 
+
+      --判断是否为空
+      select studentname from student where address is not null
+
+      --左右表都存在
+      select * from student s inner 
+      join result r on s.studentno=r.studentno
+      --左表优先显示
+      select s.studentno,s.studentname,r.score from student s 
+      left join result r on s.studentno=r.studentno
+      --右表优先显示
+      select s.studentno,s.studentname,r.score from student s 
+      right join result r on s.studentno=r.studentno
+
+      --关联查询在实际开发中用的多--
+      --自连接：课程分类里的一级类和二级类--
+      select p.categoryname as 父name,s.categoryname as 子name 
+      from category p
+      INNER join category s on s.pid = p.id
+
+      --学号、姓名、课程、分数；关联了三张表查分页前六条--
+      select s.studentno,s.studentname,sb.subjectname,r.score 
+      from student s
+      inner join subject sb on s.gradeid = sb.gradeid
+      inner join result r 
+      on s.studentno=r.studentno and r.subjectid = sb.subjectid
+      -- where s.studentname = "小周"  --查具体哪个同学
+      order by score desc   --排序
+      limit 0,6             --分页
+
+      --子查询，从里到外，可以是 = 和 in （）计算后的返回值--
+      select score,studentno from result  where subjectid in  (
+      	select subjectid from subject where subjectid = (
+      		select studentno from student where studentname = "小a周"
+      	)
+      )
+
+      ```
+3. MySQL函数
+
+   ```
+
+   ```
