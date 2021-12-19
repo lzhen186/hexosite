@@ -146,10 +146,98 @@ date: 2021-12-19T04:28:54.016Z
       		select studentno from student where studentname = "小a周"
       	)
       )
-
       ```
 3. MySQL函数
 
-   ```
+   ```sql
+   --绝对值
+   select abs(-9)
+   --向上取值
+   select ceiling(4.5)
+   --向下取值
+   select floor(4.5)
+   --随机石
+   select rand()
+   --返回负数-1 正数1 0
+   select sign(-1212)
 
+   --字符长度
+   select char_length('gsdfeffdssdf')
+   --拼接
+   select concat('dsf','sdf')
+   --插入
+   select insert ('324324324',3,4,"或")
+   --小写
+   select lower('JJIJO')
+   --大写
+   select upper('kksaf')
+   --左边取5个
+   select left('hello world',5)
+   --右边取5个
+   select right('hello world',5)
+   --替换
+   select replace('hello world','hello','bye')
+   --截取
+   select substr('hello world',4,6)
+   --反转
+   select reverse('就是说就是')
+
+   --替换操作
+   select replace(studentname,'网','王') as 新名字
+   from student where studentname like '网%'
+
+   --当前日期
+   select current_date()
+   select curdate()
+   --当前日期时间
+   select now()
+   select localtime()
+   select sysdate()
+   --当前年月日时分秒
+   select year(now()) --年月日时分秒
+
+   --软件版本
+   select version()
+   --当前用户
+   select user()
+
+   --在表没有主键时，count(1)比count(*)快
+   --有主键时，count（主键）效率最高，
+   --若表格只有一个字段，则count(*)效率较高
+   select count(studentname) from student
+   select count(*) from student
+   select count(1) from student
+
+   --总和
+   select sum(score) from result
+   --平均
+   select avg(score) from result
+   --最大
+   select max(score) from result
+   --最小
+   select min(score) from result
+
+   --分组后最高分
+   select max(score) from result r
+   group by r.subjectid
+
+   --求每个课程名称、最高分、最低分、总分、平均分
+   -- 先按课程id分组求最高分，再关联课程表求最大最小总和平均分，再having过滤
+   select sb.subjectname,max(score),min(score),sum(score),avg(score) as 平均分 
+   from result r
+   left join subject sb on sb.subjectid = r.subjectid
+   group by r.subjectid
+   having 平均分>20
+
+   CREATE TABLE `testmd5` (
+     `id` INT(4) NOT NULL,
+     `name` VARCHAR(20) NOT NULL,
+     `pwd` VARCHAR(50) NOT NULL,
+     PRIMARY KEY (`id`)
+   ) ENGINE=INNODB DEFAULT CHARSET=utf8
+
+   --md5加密函数
+   INSERT INTO testmd5 VALUES(3,'kuangshen',md5(123456)),(2,'qinjiang','456789')
+   select * from testmd5
+   update testmd5 set pwd =md5(pwd)
    ```
