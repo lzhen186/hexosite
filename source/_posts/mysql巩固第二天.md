@@ -51,15 +51,11 @@ date: 2021-12-20T08:48:19.536Z
       * 唯一索引 (Unique)
 
         避免同列数据重复 ，可以有多个
-
-
       * 常规索引 (Index/key)
 
         加在查询条件的字段
 
         不宜添加太多，影响数据增删改
-
-
       * 全文索引 (FullText)
 
         只能用于MyISAM类型的数据表
@@ -111,4 +107,8 @@ date: 2021-12-20T08:48:19.536Z
       索引一般加在查找条件的字段
    4. 索引的数据结构
 
-      🔗：<http://blog.codinglabs.org/articles/theory-of-mysql-index.html>
+      `🔗：`<http://blog.codinglabs.org/articles/theory-of-mysql-index.html>
+
+      分析工具：
+
+      `🔗：`<https://blog.csdn.net/jiadajing267/article/details/81269067>``
