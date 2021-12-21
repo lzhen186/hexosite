@@ -106,16 +106,17 @@ date: 2021-12-21T06:46:06.009Z
       }
       ......
       ```
-   3.  事务
+   3. 事务
 
-      ```java
-      conn.setAutoCommit(false);
-      //多个prepareStatement语句....//
-      conn.commit();
-      //....
-      //捕获里   
-      conn.rollback();
-      ```
+   ```java
+   conn.setAutoCommit(false);
+   //多个prepareStatement语句....//
+   conn.commit();
+   //....
+   //捕获里   
+   conn.rollback();
+   ```
+
    4. C3P0数据源
 
       ```java
@@ -154,3 +155,6 @@ date: 2021-12-21T06:46:06.009Z
           }
       }
       ```
+4. mysql执行顺序
+
+   ![](images/mysql顺序.jpg)
